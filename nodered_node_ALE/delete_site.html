@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('delete_site',{
+        category: 'ALE Omni Access Stellar',
+        color: '#b783fe',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"delete_site";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="delete_site">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="delete_site">
+    <p>A simple node that deletes the context().flow.get("OAS_siteID") site. Needs the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").</p>
+</script>

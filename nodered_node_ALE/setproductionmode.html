@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    RED.nodes.registerType('setproductionmode',{
+        category: 'ALE Omni Access Stellar',
+        color: '#b783fe',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"Set Production Mode";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="setproductionmode">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Set production mode ON </label>
+        <input type="checkbox" id="node-input-productionmode">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="setproductionmode">
+    <p>A simple node that sets the productionmode of the context().flow.get("OAS_siteID") site. Needs the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").</p>
+</script>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('latest_locationofasset',{
+        category: 'ALE Omni Access Stellar',
+        color: '#b783fe',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"latest_locationofasset";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="latest_locationofasset">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="latest_locationofasset">
+    <p>A simple node that returns the latest know position of the asset referenced by msg.macAddress in the time window defined in msg.timeWindow. Needs to have the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token"). Also needs the siteID stored in context().flow.get("OAS_siteID").</p>
+</script>

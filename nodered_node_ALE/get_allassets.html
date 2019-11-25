@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get_allassets',{
+        category: 'ALE Omni Access Stellar',
+        color: '#b783fe',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"get_allassets";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="get_allassets">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="get_allassets">
+    <p>A simple node that returns all the assets on the given site. Needs to have the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token"). Also needs the siteID stored in context().flow.get("OAS_siteID")</p>
+</script>

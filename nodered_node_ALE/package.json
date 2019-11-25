@@ -1,0 +1,39 @@
+{
+  "name": "asset_tracking_ale",
+  "version": "1.0.2",
+  "description": "This package implements functionnalities for the Asset Tracking API developped by Alcatel Lucent Enterprise",
+  "main": "authenticate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodered",
+    "asset",
+    "tracking",
+    "alcatel",
+    "lucent",
+    "IoT"
+  ],
+  "author": "Lucas CHARPENTIER, Imane EL QORCHI",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+        "authenticate": "authenticate.js",
+        "track_asset": "track_asset.js",
+        "getUser": "get_user.js",
+        "getSites":"get_sites.js",
+        "getSite":"get_site.js",
+        "getAllTags":"get_alltags.js",
+        "getTag":"get_tag.js",
+        "deleteSite":"delete_site.js",
+        "setProductionMode":"setproductionmode.js",
+        "createApplication":"create_application.js",
+        "getAssetCategories":"get_assetcategories.js",
+        "getBuildingsAndFloors":"get_buildingsandfloors.js",
+        "getBuildings":"get_buildings.js",
+        "getABuilding":"get_building.js",
+        "getAllAssets":"get_allassets.js",
+        "latestLocationOfAsset":"latest_locationofasset.js"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('authenticate',{
+        category: 'ALE Omni Access Stellar',
+        color: '#b783fe',
+        defaults: {
+            name: {value:"Authenticate Block"},
+            email: {value: ""},
+            password: {value:""},
+            appid: {value: "" },
+            appsecret:{value: ""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "hash.png",
+        label: function() {
+            return this.name||"authenticate";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="authenticate">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-email"><i class="icon-tag"></i> Email</label>
+        <input type="email" id="node-input-email" placeholder="Enter a valid administrator mail">
+    </div>
+    <div class="form-row">
+        <label for="node-input-password"><i class="icon-tag"></i> Password</label>
+        <input type="password" id="node-input-password"placeholder="Password">
+    </div>
+    <div class="form-row">
+        <label for="node-input-appid"><i class="icon-tag"></i> Application ID</label>
+        <input type="text" id="node-input-appid"placeholder="Application ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-appsecret"><i class="icon-tag"></i> Application Secret</label>
+        <input type="text" id="node-input-appsecret "placeholder="App Secret" maxlength = "255">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="authenticate">
+    <p>A simple node that authenticates the application on the Asset Tracking API.</p>
+</script>
