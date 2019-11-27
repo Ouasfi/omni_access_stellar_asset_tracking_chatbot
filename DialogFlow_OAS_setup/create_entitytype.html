@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('create_entitytype',{
+        category: 'function',
+        color: '#b783fe',
+        defaults: {
+            dialogflow: {
+                value: '',
+                type: 'dialogflowv2-token',
+                required: true
+            },
+            name: {value:"Create Entity Type"},
+            variable: {value: "topic"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"create_entitytype";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="create_entitytype">
+  <div class="form-row">
+    <label for="node-input-dialogflow">Token</label>
+    <input type="text" id="node-input-dialogflow" placeholder="Dialogflow.com access token">
+  </div>
+  <div class="form-row">
+    <label for="node-input-variable">Store <em>intent</em> in</label>
+    <input type="text" id="node-input-variable" placeholder="Variable name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="create_entitytype">
+    <p>A simple node that adds an entity type to the bot. It needs a 'msg.typeName' parameter given in the input message. This 'msg.typeName may contain only the following: A-Z, a-z, 0-9, _ (underscore), - (dash).</p>
+</script>
