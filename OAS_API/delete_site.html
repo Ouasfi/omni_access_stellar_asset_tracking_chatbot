@@ -22,5 +22,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="delete_site">
-    <p>A simple node that deletes the context().flow.get("OAS_siteID") site. Needs the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").</p>
+    <p><b>/!\\Use with care/!\\</b>\n 
+    This node deletes the site whose ID is in the variable context().flow.get("OAS_siteID") . \n\nNeeds the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").
+    \n\nUses <a href="https://developer.networkale.com/apidoc.html#tag/Site/paths/~1api~1v1~1sites~1{siteId}/delete">THIS</a> function.</p>
 </script>

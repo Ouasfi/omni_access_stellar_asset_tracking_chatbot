@@ -1,0 +1,1 @@
+[{"id":"9a4a32c4.38573","type":"create_entitytype","z":"10de2011.fe19d","dialogflow":"c46a5602.c17b98","name":"Create Entity Type","variable":"topic","x":510,"y":900,"wires":[["d997fa1a.b433a8"]]},{"id":"c46a5602.c17b98","type":"dialogflowv2-token","z":"","name":"Test Daneel"}]

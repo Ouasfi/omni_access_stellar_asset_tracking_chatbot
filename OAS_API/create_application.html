@@ -26,5 +26,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="create_application">
-    <p>A simple node that creates a default application. For now, only the name is customisable via nodered. Needs the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").</p>
+    <p><b>/!\\Use with care/!\\</b>\n This node creates another empty application linked to the account of which the User Token is made of. For now, only the name of this application is customisable via nodered. \n\nNeeds the User Token obtained with the Authentication node stored in context().global.get("OAS_access_token").\n\n
+    
+    \n\nUses <a href="https://developer.networkale.com/apidoc.html#tag/Application/paths/~1api~1v1~1applications/post">THIS</a> function.</p>
 </script>

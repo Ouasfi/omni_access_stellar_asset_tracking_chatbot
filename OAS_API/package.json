@@ -1,7 +1,7 @@
 {
-  "name": "asset_tracking_ale",
-  "version": "1.0.2",
-  "description": "This package implements functionnalities for the Asset Tracking API developped by Alcatel Lucent Enterprise",
+  "name": "OAS_API",
+  "version": "1.0.3",
+  "description": "This package implements functionnalities for the Asset Tracking API developped by Alcatel Lucent Enterprise.",
   "main": "authenticate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,14 @@
     "tracking",
     "alcatel",
     "lucent",
-    "IoT"
+    "IoT",
+    "OAS",
+    "Omni",
+    "Asset",
+    "Tracking",
+    "API"
   ],
-  "author": "Lucas CHARPENTIER, Imane EL QORCHI",
+  "author": "Lucas CHARPENTIER",
   "license": "ISC",
   "node-red": {
     "nodes": {

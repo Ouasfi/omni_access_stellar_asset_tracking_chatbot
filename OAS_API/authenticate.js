@@ -8,11 +8,21 @@ module.exports = function (RED) {
         var node = this;
         node.on('input', function (msg) {
             var request = require('request');
+            
+            
+            if (options.email==undefined){
+                console.error("Please define the email parameter in the authentification node.")}
+            if (options.password==undefined){
+                console.error("Please define the password parameter in the authentification node.")}
+            if (options.appid==undefined){
+                console.error("Please define the appid parameter in the authentification node.")}
+            if (options.appsecret==undefined){
+                console.error("Please define the appsecret parameter in the authentification node.")}
             var data={
                     "email": options.email,
                     "password": options.password,
                     "appId": options.appid,
-                    "appSecret": options.appsecret||"7e3075854a1f4700800d3cdfb52557fa993d545c1dbd1522247c3009a1e8e73d"
+                    "appSecret": options.appsecret
                 };
             const option = {
                 url: 'https://api.networkale.com/api/v1/applications/authenticate',
@@ -25,8 +35,6 @@ module.exports = function (RED) {
                 
             };
             request( option, function(error, response, body) {
-                //console.log(body);
-                //console.log(response);
                 if (error!=null){console.log(error)}
                 msg.payload = {body:body,
                                error:error};
