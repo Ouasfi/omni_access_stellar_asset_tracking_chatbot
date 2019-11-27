@@ -6,7 +6,7 @@ var dialogflow = require('dialogflow');
 module.exports = function (RED) {
 
     
-    function CreateEntityTypeNode(options) {
+    function ListEntityTypes(options) {
         RED.nodes.createNode(this, options);
         var node = this;
         node.dialogflow = options.dialogflow;
@@ -14,14 +14,8 @@ module.exports = function (RED) {
         
         
         node.on('input', function (msg) {
-            if (msg.typeName!==undefined){
-                node.typeName=msg.typeName;
-            }
-            else{
-                console.error("There is no 'msg.typeName' parameter given in the input message.")
-            }
-            
           var dialogFlowNode = RED.nodes.getNode(node.dialogflow);
+            
           var variable = node.variable;
 
           var email = dialogFlowNode.credentials.email;
@@ -29,28 +23,23 @@ module.exports = function (RED) {
           var projectId = dialogFlowNode.credentials.projectId;
 
           var entityTypesClient = new dialogflow.EntityTypesClient({
-            credentials: {
-              private_key: privateKey,
-              client_email: email
-            }
-          });
+                credentials: {
+                    private_key: privateKey,
+                    client_email: email
+                }
+            });
+    
             const formattedParent = entityTypesClient.projectAgentPath(projectId);
-            var entityType = {
-
-                displayName:node.typeName,
-                kind:1
-                
-            };
             const request = {
-              parent: formattedParent,
-              entityType: entityType,
+              parent: formattedParent
             };
-            entityTypesClient.createEntityType(request)
+            
+            entityTypesClient.listEntityTypes(request)
               .then(responses => {
                 const response = responses[0];
                 // doThingsWith(response)
-                console.log(`Created ${responses} entity type`);
-                msg.payload=responses;
+                console.log(`Listed ${responses} entity types.`);
+                msg.payload=response;
                 node.send(msg);
               })
               .catch(err => {
@@ -64,6 +53,6 @@ module.exports = function (RED) {
        
         
     }
-    RED.nodes.registerType("create_entitytype",CreateEntityTypeNode);
+    RED.nodes.registerType("list_entitytypes",ListEntityTypes);
 }
 

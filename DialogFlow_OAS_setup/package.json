@@ -20,7 +20,9 @@
   "license": "ISC",
   "node-red": {
     "nodes": {
-        "createEntityType": "create_entitytype.js"
+        "createEntityType": "create_entitytype.js",
+        "listEntityTypes":  "list_entitytypes.js",
+        "createEntity":     "create_entity.js"
     }
   }
 }

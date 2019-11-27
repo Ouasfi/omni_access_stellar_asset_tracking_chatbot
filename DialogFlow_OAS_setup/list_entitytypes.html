@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('create_entitytype',{
+    RED.nodes.registerType('list_entitytypes',{
         category: 'Dialogflow',
         color: '#b783fe',
         defaults: {
@@ -8,25 +8,27 @@
                 type: 'dialogflowv2-token',
                 required: true
             },
-            name: {value:"Create Entity Type"},
+            name: {value:"List Entity Types"},
             variable: {value: "topic"}
         },
         inputs:1,
         outputs:1,
         icon: "file.png",
         label: function() {
-            return this.name||"create_entitytype";
+            return this.name||"list_entitytypes";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="create_entitytype">
+<script type="text/x-red" data-template-name="list_entitytypes">
   <div class="form-row">
     <label for="node-input-dialogflow">Token</label>
     <input type="text" id="node-input-dialogflow" placeholder="Dialogflow.com access token">
   </div>
 </script>
 
-<script type="text/x-red" data-help-name="create_entitytype">
-    <p>A simple node that adds an entity type to the bot. It needs a 'msg.typeName' parameter given in the input message. This 'msg.typeName may contain only the following: A-Z, a-z, 0-9, _ (underscore), - (dash).</p>
+<script type="text/x-red" data-help-name="list_entitytypes">
+    <p>This node return a list the entity types of the bot.
+    
+    Calls the API function https://cloud.google.com/nodejs/docs/reference/dialogflow/0.8.x/v2.EntityTypesClient#listEntityTypes</p>
 </script>

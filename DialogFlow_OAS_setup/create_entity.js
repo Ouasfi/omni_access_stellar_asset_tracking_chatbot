@@ -6,7 +6,7 @@ var dialogflow = require('dialogflow');
 module.exports = function (RED) {
 
     
-    function CreateEntityTypeNode(options) {
+    function CreateEntity(options) {
         RED.nodes.createNode(this, options);
         var node = this;
         node.dialogflow = options.dialogflow;
@@ -14,12 +14,25 @@ module.exports = function (RED) {
         
         
         node.on('input', function (msg) {
-            if (msg.typeName!==undefined){
-                node.typeName=msg.typeName;
+            if (msg.entityValue!==undefined){
+                node.entityValue=msg.entityValue;
             }
             else{
-                console.error("There is no 'msg.typeName' parameter given in the input message.")
+                console.error("There is no 'msg.entityValue' parameter given in the input message.")
             }
+            if (msg.entitySynonyms!==undefined){
+                node.entitySynonyms=msg.entitySynonyms;
+            }
+            else{
+                console.error("There is no 'msg.entitySynonyms' parameter given in the input message.")
+            }
+            if (msg.entityTypeId!==undefined){
+                node.entityTypeId=msg.entityTypeId;
+            }
+            else{
+                console.error("There is no 'msg.entityTypeId' parameter given in the input message.")
+            }
+            
             
           var dialogFlowNode = RED.nodes.getNode(node.dialogflow);
           var variable = node.variable;
@@ -29,23 +42,27 @@ module.exports = function (RED) {
           var projectId = dialogFlowNode.credentials.projectId;
 
           var entityTypesClient = new dialogflow.EntityTypesClient({
-            credentials: {
-              private_key: privateKey,
-              client_email: email
-            }
-          });
-            const formattedParent = entityTypesClient.projectAgentPath(projectId);
-            var entityType = {
+                credentials: {
+                    private_key: privateKey,
+                    client_email: email
+                }
+            });
+            
+            const formattedParent = entityTypesClient.entityTypePath(projectId, node.entityTypeId);
+            
+            var entity = {
 
-                displayName:node.typeName,
-                kind:1
+                value:node.entityValue,
+                synonyms:node.entitySynonyms
                 
             };
+            var entities=[entity];
+            
             const request = {
               parent: formattedParent,
-              entityType: entityType,
+              entities: entities,
             };
-            entityTypesClient.createEntityType(request)
+            entityTypesClient.batchCreateEntities(request)
               .then(responses => {
                 const response = responses[0];
                 // doThingsWith(response)
@@ -64,6 +81,6 @@ module.exports = function (RED) {
        
         
     }
-    RED.nodes.registerType("create_entitytype",CreateEntityTypeNode);
+    RED.nodes.registerType("create_entity",CreateEntity);
 }
 

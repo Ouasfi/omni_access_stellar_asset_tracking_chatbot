@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('create_entity',{
+        category: 'Dialogflow',
+        color: '#b783fe',
+        defaults: {
+            dialogflow: {
+                value: '',
+                type: 'dialogflowv2-token',
+                required: true
+            },
+            name: {value:"Create Entity"},
+            variable: {value: "topic"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"create_entity";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="create_entity">
+  <div class="form-row">
+    <label for="node-input-dialogflow">Token</label>
+    <input type="text" id="node-input-dialogflow" placeholder="Dialogflow.com access token">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="create_entity">
+    <p>This node adds one entry to an entity type of the bot. It needs a 'msg.entityValue', a 'msg.entitySynonyms' and a 'msg.entityTypeId' parameter given in the input message. Refer to https://cloud.google.com/nodejs/docs/reference/dialogflow/0.8.x/google.cloud.dialogflow.v2#.Entity for more precisions about the constraints on the values of those parameters
+    
+    
+    Uses the https://cloud.google.com/nodejs/docs/reference/dialogflow/0.8.x/v2.EntityTypesClient#batchCreateEntities
+    method.</p>
+</script>
