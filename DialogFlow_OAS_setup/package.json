@@ -1,8 +1,8 @@
 {
-  "name": "dialogflow_ale_setup",
-  "version": "0.0.1",
-  "description": "This package implements nodes for the Asset Tracking API developped by Alcatel Lucent Enterprise and IMT Atlantique. These nodes allow to do the configuration of entities & entityTypes of a dialogflow bot.",
-  "main": "authenticate.js",
+  "name": "node-red-contrib-DialogFlow-setup-OAS",
+  "version": "0.1.0",
+  "description": "The nodes allow to configure entities & entityTypes of a dialogflow bot. This package was created in the context of the OAS Chatbot development for ALE.",
+  "main": "create_entity.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,8 @@
     "lucent",
     "IoT",
     "dialogflow",
-    "setup"
+    "setup",
+    "OAS"
   ],
   "author": "Lucas CHARPENTIER",
   "license": "ISC",

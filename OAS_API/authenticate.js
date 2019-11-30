@@ -18,6 +18,7 @@ module.exports = function (RED) {
                 console.error("Please define the appid parameter in the authentification node.")}
             if (options.appsecret==undefined){
                 console.error("Please define the appsecret parameter in the authentification node.")}
+            
             var data={
                     "email": options.email,
                     "password": options.password,

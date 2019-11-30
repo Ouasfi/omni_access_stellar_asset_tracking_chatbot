@@ -1,7 +1,7 @@
 {
-  "name": "OAS_API",
-  "version": "1.0.3",
-  "description": "This package implements functionnalities for the Asset Tracking API developped by Alcatel Lucent Enterprise.",
+  "name": "node-red-contrib-OAS-API",
+  "version": "1.1.0",
+  "description": "This package implements functionnalities for the Omni Asset Tracking API developped by Alcatel Lucent Enterprise.",
   "main": "authenticate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,7 +24,6 @@
   "node-red": {
     "nodes": {
         "authenticate": "authenticate.js",
-        "track_asset": "track_asset.js",
         "getUser": "get_user.js",
         "getSites":"get_sites.js",
         "getSite":"get_site.js",

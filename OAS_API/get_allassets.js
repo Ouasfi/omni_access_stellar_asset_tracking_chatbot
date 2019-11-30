@@ -8,6 +8,11 @@ module.exports = function (RED) {
         var node = this;
         node.on('input', function (msg) {
             var request = require('request');
+            
+            if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
+            if(node.context().flow.get("OAS_siteID")==undefined){node.error("node.context().flow.get(\"OAS_siteID\") is not configured. PLease use the getSites object to extract the siteID and fill this variable.") }
+            
+            
             const option = {
                 url: 'https://api.networkale.com/api/v1/sites/'+this.context().flow.get("OAS_siteID")+"/assets",
                 

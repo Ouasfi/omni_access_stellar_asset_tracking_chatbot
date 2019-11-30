@@ -5,6 +5,10 @@ module.exports = function (RED) {
     
     function GetSites(options) {
         RED.nodes.createNode(this, options);
+        
+        if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
+        
+        
         var node = this;
         node.on('input', function (msg) {
             var request = require('request');

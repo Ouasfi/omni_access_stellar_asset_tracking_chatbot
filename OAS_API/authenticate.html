@@ -13,7 +13,7 @@
         outputs:1,
         icon: "hash.png",
         label: function() {
-            return this.name||"authenticate";
+            return this.name||"Authenticate Application";
         }
     });
 </script>
@@ -40,11 +40,11 @@
       <textarea
         type="text"
         id="node-input-appsecret"
-        style="width:100%;height:400px;font-size:11px;font-family:monospace;"
+        style="width:100%;"
       />
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="authenticate">
-    <p>This node returns the access token via authenticating the application on the Asset Tracking API. \nThis access token has to be put in the context().global.get("OAS_access_token") variable.\n\nUses <a href="https://developer.networkale.com/apidoc.html#tag/Application/paths/~1api~1v1~1applications~1authenticate/post">THIS</a> function. </p>
+    <p>This node returns the access token via authenticating the application on the Asset Tracking API. \nThis access token has to be  in the context().global.get("OAS_access_token") variable.\n\nUses <a href="https://developer.networkale.com/apidoc.html#tag/Application/paths/~1api~1v1~1applications~1authenticate/post">THIS</a> function. </p>
 </script>

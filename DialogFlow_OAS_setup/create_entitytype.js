@@ -6,7 +6,7 @@ var dialogflow = require('dialogflow');
 module.exports = function (RED) {
 
     
-    function CreateEntityTypeNode(options) {
+    function CreateEntityType(options) {
         RED.nodes.createNode(this, options);
         var node = this;
         node.dialogflow = options.dialogflow;
@@ -64,6 +64,6 @@ module.exports = function (RED) {
        
         
     }
-    RED.nodes.registerType("create_entitytype",CreateEntityTypeNode);
+    RED.nodes.registerType("create_entitytype",CreateEntityType);
 }
 
