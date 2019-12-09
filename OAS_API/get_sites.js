@@ -6,9 +6,10 @@ module.exports = function (RED) {
     function GetSites(options) {
         RED.nodes.createNode(this, options);
         var node = this;
-        if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
+        
         
         node.on('input', function (msg) {
+            if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
             var request = require('request');
             const option = {
                 url: 'https://api.networkale.com/api/v1/sites',

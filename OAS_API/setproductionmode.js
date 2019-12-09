@@ -6,12 +6,13 @@ module.exports = function (RED) {
     function SetProductionMode(options) {
         RED.nodes.createNode(this, options);
         var node = this;
-        if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
-        if(node.context().flow.get("OAS_siteID")==undefined){node.error("node.context().flow.get(\"OAS_siteID\") is not configured. PLease use the getSites object to extract the siteID and fill this variable.") }
+        
         
         
         
         node.on('input', function (msg) {
+            if(node.context().global.get("OAS_access_token")==undefined){node.error("\"node.context().global.get(\"OAS_access_token\")\" is not configured. PLease use the authenticate object to get the right access_token and fill this variable.") }
+            if(node.context().flow.get("OAS_siteID")==undefined){node.error("node.context().flow.get(\"OAS_siteID\") is not configured. PLease use the getSites object to extract the siteID and fill this variable.") }
             var request = require('request');
             var data={
                     "isInProduction": options.productionmode
