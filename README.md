@@ -1,24 +1,110 @@
 # omni_access_stellar_asset_tracking_chatbot
 
-## Prerequisites
+## Complete installation guide
 
-A dialogflow V2 Active Service and the corresponding ID and token (more info on this configuration available at https://github.com/guidone/node-red-contrib-chatbot/wiki/Dialogflow-node). (Except if you want to use our test bot, which is already configured in the node-red flow).
+First clone this repository to your machine or download and extract it.
 
-An asset tracking account and application id. (One is already set up if you don't have one).
+### Prerequisites
 
-NodeJS (https://nodejs.org/en/download/) installed on your machine.
+A Google account (to be able to use dialogflow).
 
-Node-red (https://nodered.org/) installed on your machine.
+An open stellar asset tracking account and application id.
 
-A rainbow (https://www.openrainbow.com/fr-fr) user account for chatbot (and eventually another user account for testing), a rainbow application id.
+A rainbow (https://www.openrainbow.com) admin account (or a developper sandbox account).
+
+### Setup your dialogflow environment
+
+More information on this configuration is available at https://github.com/guidone/node-red-contrib-chatbot/wiki/Dialogflow-node.
+If you want to use our test bot, which is already configured in the node-red flow, you don't need to do this part. However this might not work on a site different from ours.
+
+#### Create the agent
+
+Click on the corresponding creation menu : `create new agent ` and fill all the required information.
+
+#### Import our intent (and test entities)
+
+Click on `Export and Import` then `IMPORT FROM ZIP`.
+
+Then select the corresponding file.
+
+```
+[project URL]/dialogflow_intent/Chatbot-asset-tracking.zip
+```
+
+Finally type `IMPORT` in the corresponding space under the file name, and click on `Import` button.
+
+#### Correctly define entities
+
+To work properly, the dialogflow entities must be defined from the open stellar asset tracking data.
+
+In the `Entity` menu in dialogflow, set the Building, Floor and asset_type entities.
+You can choose any synonym you want for every item.
+
+##### Building entity
+
+The name of each Building must exactly correspond to the name of each building in your Open Stellar site database.
+
+##### Floor entity
+
+The name of each Floor must exactly correspond to the name of each floor in your Open Stellar site database.
+
+##### asset_type entity
+
+The name of each asset_type must exactly correspond to the name of each category in your Open Stellar site database.
+
+### Setup your Rainbow chatbot environment
+
+Connect to your chatbot rainbow account and add to your contacts all the user accounts.
+
+### Install node-red
+
+#### Install NodeJS (https://nodejs.org/en/download/) on your machine.
+
+Choose the version corresponding to your OS and execute the installer.
+
+#### Install Node-red (https://nodered.org/) on your machine.
+
+```
+sudo npm install -g --unsafe-perm node-red
+```
+
+### Install the required external packages for node-red
 
 The Dialogflow.com node for node-red (https://flows.nodered.org/node/node-red-contrib-dialogflowv2-api).
 
+```
+npm i -g node-red-contrib-dialogflowv2-api
+```
+
 The Rainbow nodes for node-red (https://flows.nodered.org/node/node-red-contrib-ale-rainbow).
 
-## Installing
+```
+npm install node-red-contrib-ale-rainbow
+```
 
-First clone this repository to your machine or download and extract it.
+The SQLite node for node-red (https://flows.nodered.org/node/node-red-node-sqlite).
+
+```
+npm i --unsafe-perm node-red-node-sqlite
+```
+
+### Install our asset tracking package for node-red
+
+Go to the .node-red directory within a terminal
+
+```
+cd C:/User/Username/.node-red
+```
+
+Install the asset tracking package
+
+```
+npm install [project URL]/OAS_API
+
+Ex : npm install C:/User/Username/Downloads/omni_access_stellar_asset_tracking_chatbot/OAS_API
+```
+
+### Import the project in node-red
 
 Launch node-red from a terminal
 
@@ -34,21 +120,17 @@ Example : Server now running at http://127.0.0.1:1880/red/
 
 Import the file 'asset_tracking.json' from the node-red browser page.
 
-### Node configuration :
+### Configure the node-red flow :
+
+#### SQLite node conguration
 
 Edit (double click) one rainbow node (for example 'Message notification'), and edit the rainbow broker with your chatbot id and password and with your rainbow application id and password.
 
 Edit one sqlite node (for example 'list mac address') and change the URL to the one of the 'database/asset_tracking.sqlite' file in this repository.
 
 ```
-Example : C:/Document/omni_access_stellar_asset_tracking_chatbot/database/asset_tracking.sqlite
+Example : C:/User/Username/omni_access_stellar_asset_tracking_chatbot/database/asset_tracking.sqlite
 ```
-
-You can also configurate the dialogflow and asset tracking nodes but it has been already configured with valid data. To do that see the extended configuration section.
-
-### Rainbow configuration
-
-Connect to your chatbot rainbow account and add to your contacts all the user accounts.
 
 ## Getting started
 
@@ -60,7 +142,7 @@ node-red
 
 Connect to a user account (which has the chatbot as a contact).
 
-Writes a query to the chatbot
+Write a query to the chatbot
 
 ```
 I need a xray in building A at first floor.
